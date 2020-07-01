@@ -12,9 +12,9 @@ namespace GradeBook
             Console.WriteLine("#=======================#");
 
             StartingUserInterface.CommandLoop();
-            
+
             Console.WriteLine("Thank you for using GradeBook!");
-            Console.WriteLine("Have a nice day!");
+            Console.WriteLine("Have a very nice day!");
             Console.Read();
         }
     }
