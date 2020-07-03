@@ -70,7 +70,7 @@ namespace GradeBook.UserInterfaces
             if (gradeBook == null)
             return;
 
-            GradeBookUserInterface.CommandLoop(name);
+            GradeBookUserInterface.CommandLoop(gradeBook);
         }
 
         public static void HelpCommand()
