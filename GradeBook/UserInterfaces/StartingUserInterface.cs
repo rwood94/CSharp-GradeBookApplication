@@ -48,18 +48,31 @@ namespace GradeBook.UserInterfaces
         public static void LoadCommand(string command)
         {
             var parts = command.Split(' ');
-            if (parts.Length != 2)
+            if (parts.Length != 3)
             {
-                Console.WriteLine("Command not valid, Load requires a name.");
+                Console.WriteLine("Command not valid, Create requires a name and type of gradebook.");
                 return;
             }
-            var name = parts[1];
-            var gradeBook = BaseGradeBook.Load(name);
+            var name = parts[2];
 
-            if (gradeBook == null)
-                return;
+            if (name == "standard")
+            {
+                var gradeBook = StandardGradeBook.Load(name);
+                GradeBookUserInterface.CommandLoop(gradeBook);
+            }
 
-            GradeBookUserInterface.CommandLoop(gradeBook);
+            else if (name == "ranked")
+            {
+                var gradeBook = RankedGradeBook.Load(name);
+                GradeBookUserInterface.CommandLoop(gradeBook);
+            }
+
+            else
+
+            Console.WriteLine($"{name} is not a supported type of gradebook, please try again");
+            return;
+
+
         }
 
         public static void HelpCommand()
@@ -67,7 +80,7 @@ namespace GradeBook.UserInterfaces
             Console.WriteLine();
             Console.WriteLine("GradeBook accepts the following commands:");
             Console.WriteLine();
-            Console.WriteLine("Create 'Name' - Creates a new gradebook where 'Name' is the name of the gradebook.");
+            Console.WriteLine("Create 'Name' 'Type' - Creates a new gradebook where 'Name' is the name of the gradebook and 'Type' is what type of grading it should use.");
             Console.WriteLine();
             Console.WriteLine("Load 'Name' - Loads the gradebook with the provided 'Name'.");
             Console.WriteLine();
